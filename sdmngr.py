@@ -14,9 +14,8 @@ def load():
     '''
     生成所有所需要的全局变量
     '''
-    NAME2CODE: pd.DataFrame = pd.read_csv("generic/name2code.csv")
-    CALANDER : pd.DataFrame = pd.read_csv("generic/calander.csv")
-    MANIFEST : pd.DataFrame = pd.read_csv("manifest.csv")
+    NAME2CODE: pd.DataFrame = pd.read_csv("storage/name2code.csv")
+    CALANDER : pd.DataFrame = pd.read_csv("storage/calander.csv")
 
     for (idx, line) in NAME2CODE.iterrows():
         name2code[line["name"]] = line["ts_code"]
