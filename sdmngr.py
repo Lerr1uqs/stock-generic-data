@@ -64,16 +64,17 @@ class StocksManager:
             name = code2name[code]
             cls.stock_tokens.append(StockToken(code, name))
 
-    @check_data_loaded
+    # 不知道为什么 这装饰器顺序不能变
     @classmethod
+    @check_data_loaded
     def gen_code_list(cls, exchg_as_suffix=True, exchg_as_upper=True) -> List[str]:
         '''
         产生代码字符串表示列表
         '''
         return [st.repr(exchg_as_suffix, exchg_as_upper) for st in cls.stock_tokens]
     
-    @check_data_loaded
     @classmethod
+    @check_data_loaded
     def code_to_name(cls, code: str) -> str:
         '''
         sh000001
@@ -84,14 +85,14 @@ class StocksManager:
 
         return code2name[st.repr()]
 
-    @check_data_loaded
     @classmethod
+    @check_data_loaded
     def name_to_code(cls, name: str) -> Optional[str]:
 
         return name2code[name]
 
-    @check_data_loaded
     @classmethod
+    @check_data_loaded
     def name_to_token(cls, name: str) -> Optional[str]:
 
         return StockToken(name2code[name], name)
