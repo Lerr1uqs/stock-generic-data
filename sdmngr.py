@@ -1,6 +1,6 @@
 # stock data manager
-from utils import *
-from stocktoken import StockToken
+from .utils import *
+from .stocktoken import StockToken
 from functools import wraps
 
 import os
@@ -39,7 +39,7 @@ def check_data_loaded(f: Callable) -> Callable:
     def wrapper(cls, *args, **kwargs):
         t = cls
         if t.loaded is False:
-            raise RuntimeError
+            raise RuntimeError("sdmngr not loaded yet")
         ret = f(cls, *args, **kwargs)
         return ret
 
